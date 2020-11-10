@@ -1,0 +1,32 @@
+<!-- <div class="welcome-message">{{welcomeMessage}}</div>
+<app-name-input *ngIf="isVisible" (btnClick)="nameInputBtnClickHandler($event)" [inputValue]="nameInputValue">
+</app-name-input> -->
+<!-- 
+<div>
+  IS VISIBLE
+</div>
+<div *ngIf="!isVisible">
+  IS NOT VISIBLE
+</div> -->
+<!-- 
+
+
+<ul>
+  <li *ngFor="let user of users; let i = index;">
+    <span>{{i + 1}}. </span>
+    <span>{{user.firstName}}</span> -
+    <span>{{user.lastName}}</span> /
+    <span>{{user.age}}</span>
+  </li>
+</ul>
+
+<button (click)="toggleHandler()">Toggle</button> -->
+<div *ngIf="users === null">Loading...</div>
+<div *ngIf="users !== null">
+  <ul>
+    <li *ngFor="let user of users">{{user.username}}</li>
+  </ul>
+</div>
+
+
+<app-test [obj]="data"></app-test>
