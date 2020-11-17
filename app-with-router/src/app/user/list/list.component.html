@@ -1,0 +1,8 @@
+<app-loader [showLoader]="!userList"></app-loader>
+<div *ngIf="userList">
+  <ul>
+    <li *ngFor="let user of userList">
+      <a [routerLink]="['/user/detail/', user.id]">{{user.username}}</a>
+    </li>
+  </ul>
+</div>
