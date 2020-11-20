@@ -1,0 +1,38 @@
+<header>
+
+  You can show and hide the html elements based on this variable: {{hideNavigation}}
+  <div class="mini-navbar-wrap">
+    <div class="logo-wrap">
+      <p class="logo"><span class="logo">SoftUni Forum</span></p>
+    </div>
+    <div class="mini-navbar">
+      <ul>
+        <li *ngIf="isLogged">
+          <a routerLink="/user/profile">John's profile</a>
+        </li>
+        <li *ngIf="isLogged">
+          <a (click)="logoutHandler()">Logout</a>
+        </li>
+        <li *ngIf="!isLogged">
+          <a routerLink="/user/login">Login</a>
+        </li>
+        <li *ngIf="!isLogged">
+          <a routerLink="/user/register">Register</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/home">Home</a>
+      </li>
+      <li>
+        <a routerLink="/theme">Themes</a>
+      </li>
+      <li>
+        <a routerLink="/theme/new">New Theme</a>
+      </li>
+    </ul>
+  </nav>
+</header>

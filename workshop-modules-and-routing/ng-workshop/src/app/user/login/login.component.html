@@ -1,0 +1,40 @@
+<form class="login" action="" method="post">
+
+  <fieldset>
+    <h2>Login Form</h2>
+
+    <p class="field field-icon">
+      <label for="email"><span><i class="fas fa-envelope"></i></span></label>
+      <input #userEmail class="input-error" type="email" name="email" id="email" placeholder="john.doe@gmail.com"
+        (keyup)="updateInputValue('email', userEmail.value)">
+    </p>
+
+    <p *ngIf="showEmailError" class="error">
+      Email is required!
+    </p>
+    <!-- <p class="error">
+          Email is not valid!
+      </p> -->
+
+    <p class="field field-icon">
+      <label for="password"><span><i class="fas fa-lock"></i></span></label>
+      <input #userPassword type="password" name="password" id="password" placeholder="******"
+        (keyup)="updateInputValue('password', userPassword.value)">
+    </p>
+    <p *ngIf="showPasswordError" class="error">
+      Password is required!
+    </p>
+    <!--   <p class="error">
+          Password must be at least 4 characters!
+      </p> -->
+
+    <button type="button" (click)="submitFormHandler()" [disabled]="hasFormErrors">Login</button>
+    <app-loader [isLoading]="isLoading"></app-loader>
+
+    <p class="text-center">
+      Have an account?
+      <a routerLink="/user/register">Register</a>
+    </p>
+
+  </fieldset>
+</form>
