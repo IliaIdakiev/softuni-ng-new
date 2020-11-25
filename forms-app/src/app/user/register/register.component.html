@@ -1,0 +1,34 @@
+<form [formGroup]="form" (ngSubmit)="registerHandler()">
+  <div>
+    <label for="email">Email</label>
+    <input formControlName="email" type="text" name="email" id="email">
+    <div *ngIf="form.get('email').touched && form.get('email').errors?.required" class="vaidation-error">Email is
+      required!</div>
+    <div *ngIf="form.get('email').touched && form.get('email').errors?.email" class="vaidation-error">Email is invalid!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input [formControl]="form.get('password')" type="password" name="password" id="password">
+    <div *ngIf="form.get('password').touched && form.get('password').errors?.required" class="vaidation-error">Password
+      is required!
+    </div>
+    <div *ngIf="form.get('password').touched && form.get('password').errors?.minlength" class="vaidation-error">Password
+      should be more than {{form.get('password').errors?.minlength?.requiredLength}} chars;
+    </div>
+  </div>
+  <div [formGroup]="form.get('address')">
+    <div>
+      <label for="street">Street</label>
+      <input [formControl]="form.get('address').get('street')" type="text" name="street" id="street">
+    </div>
+    <div>
+      <label for="postCode">Post Code</label>
+      <input formControlName="postCode" type="text" name="post-code" id="postCode">
+    </div>
+  </div>
+
+  {{ form.value | json }}
+  <button [disabled]="form.invalid">Register</button>
+  <button type="button" (click)="reset()">Reset</button>
+</form>
