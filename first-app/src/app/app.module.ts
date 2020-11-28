@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NameInputComponent } from './name-input/name-input.component';
 import { TestComponent } from './test/test.component';
 import { apiURLProvider, MyService } from './providers';
+import { FormsModule } from '@angular/forms';
+import { TestDirective } from './test.directive';
 
 
 // APP MODUlE ---------------
@@ -20,11 +22,13 @@ import { apiURLProvider, MyService } from './providers';
   declarations: [
     AppComponent,
     NameInputComponent,
-    TestComponent
+    TestComponent,
+    TestDirective
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     apiURLProvider,

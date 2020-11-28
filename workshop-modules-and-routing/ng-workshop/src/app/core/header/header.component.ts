@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { filter, throttleTime } from 'rxjs/operators';
+import { ActivationEnd, NavigationEnd, Router } from '@angular/router';
+import { asyncScheduler, Subscription } from 'rxjs';
+import { buffer, bufferTime, debounceTime, filter, map, observeOn, throttleTime } from 'rxjs/operators';
 import { UserService } from '../../user/user.service';
 
 @Component({
@@ -24,10 +24,28 @@ export class HeaderComponent implements OnDestroy {
     public userService: UserService,
     router: Router
   ) {
-    this.subscription = router.events.pipe(filter(e => e instanceof ActivationEnd), throttleTime(0)).subscribe((e: ActivationEnd) => {
-      title.setTitle(e.snapshot.data?.title);
-      this.hideNavigation = !!e.snapshot.data?.noNavigation;
-    });
+
+    router.events.pipe(
+      filter(e => e instanceof ActivationEnd),
+      buffer(router.events.pipe(filter(e => e instanceof NavigationEnd), debounceTime(0))),
+      map((events: ActivationEnd[]) => events.reduce((acc, curr) => ({ ...acc, ...curr.snapshot.data }), {}))
+    ).subscribe(console.log);
+
+    // this.subscription = router.events.pipe(
+    //   filter(e => e instanceof ActivationEnd),
+    //   throttleTime(0),
+    //   map((e: ActivationEnd) => e.snapshot.data)
+    // ).subscribe(data => {
+    //   console.log(data);
+    //   title.setTitle(data?.title);
+    //   this.hideNavigation = !!data?.noNavigation;
+    // });
+
+
+
+    // router.events.pipe(
+    //   filter(e => e instanceof ActivationEnd),
+    // ).subscribe(console.log);
   }
 
   logoutHandler(): void {

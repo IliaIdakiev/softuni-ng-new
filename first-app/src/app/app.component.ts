@@ -30,7 +30,7 @@ const users = [
 })
 export class AppComponent {
 
-  users: IUser[] | null = null;
+  // users: IUser[] | null = null;
 
   welcomeMessage = 'Hello!';
 
@@ -41,6 +41,34 @@ export class AppComponent {
   data = {
     name: 'TEST'
   };
+
+
+  inputValue = 'Hello!';
+  counter = 0;
+  test = false;
+
+  users = [
+    {
+      name: 'Ivan',
+      age: 20
+    },
+    {
+      name: 'Peter',
+      age: 24
+    }
+  ] as any[];
+
+  incrementHandler(e: MouseEvent): void {
+    this.counter++;
+  }
+
+  toggleDiv(): void {
+    this.test = !this.test;
+  }
+
+  updateInputValue(newValue: any): void {
+    this.inputValue = newValue;
+  }
 
   nameInputBtnClickHandler(data: { inputEl: HTMLInputElement }): void {
     console.log(data.inputEl.value);
