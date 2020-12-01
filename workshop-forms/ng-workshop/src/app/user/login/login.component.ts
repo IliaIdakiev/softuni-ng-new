@@ -20,6 +20,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  changeHandler(data: any): void {
+    console.log(data);
+  }
+
   submitFormHandler(formValue: { email: string, password: string }): void {
     this.isLoading = true;
     this.errorMessage = '';

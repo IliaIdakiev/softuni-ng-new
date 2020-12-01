@@ -1,6 +1,6 @@
 <div *ngIf="test" [appTest]="123" (click)="updateInputValue(input.value)">This is my counter: {{counter}}</div>
 <button (click)="incrementHandler($event)">Increment</button>
-<button (click)="toggleDiv()">Toggle DIV</button>
+<button (click)="toggleDiv.call(this, 1)">Toggle DIV</button>
 <input #input type="text" [value]="inputValue" ngModel />
 <button (click)="updateInputValue(input.value)">Update input Value</button>
 <div>

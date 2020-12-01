@@ -1,0 +1,7 @@
+<nav [ngClass]="{ 'admin': isAdmin }">
+  <a routerLink="/">Home</a>
+  <a routerLink="/about">About</a>
+  <a routerLink="/user">User List</a>
+</nav>
+
+{{userList$ | async | json}}

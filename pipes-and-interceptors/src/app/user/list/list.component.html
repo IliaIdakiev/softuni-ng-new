@@ -1,0 +1,8 @@
+<app-loader [showLoader]="!(userList$ | async)"></app-loader>
+<div *ngIf="(userList$ | async) as users">
+  <ul>
+    <li *ngFor="let user of (userList$ | async)">
+      <a [routerLink]="['/user/detail/', user.id]">{{user.username}}</a>
+    </li>
+  </ul>
+</div>

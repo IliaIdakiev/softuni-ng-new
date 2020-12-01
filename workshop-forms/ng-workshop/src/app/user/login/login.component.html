@@ -8,7 +8,8 @@
       <!-- <input #userEmail="ngModel" [class.input-error]="userEmail.touched && !!userEmail.errors" type="text" name="email"
         id="email" placeholder="john.doe@gmail.com" ngModel required pattern="^[a-zA-Z\.-]{6,}@\w+\.(com|bg)$"> -->
       <input #userEmail="ngModel" [class.input-error]="userEmail.touched && !!userEmail.errors" type="text" name="email"
-        id="email" placeholder="john.doe@gmail.com" ngModel required appEmailValidator>
+        id="email" placeholder="john.doe@gmail.com" ngModel appSubmitOnValid
+        (ngModelChangeIfValid)="changeHandler($event)" required appEmailValidator>
     </p>
 
     <p *ngIf="userEmail.touched && userEmail.errors?.required" class="error">
