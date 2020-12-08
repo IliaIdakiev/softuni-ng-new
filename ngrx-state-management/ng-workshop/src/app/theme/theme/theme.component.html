@@ -1,0 +1,10 @@
+{{isLoading$ | async}}
+<main>
+  <app-theme-list></app-theme-list>
+</main>
+
+<aside>
+  <app-aside>
+    <app-post-list [postList]="postList$ | async"></app-post-list>
+  </app-aside>
+</aside>
